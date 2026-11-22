@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solmar Bay — open-world crime game</title>
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three.module.min.js"
+  }
+}
+</script>
+</head>
+<body>
+<div id="load-error"></div>
+
+<!-- HUD -->
+<div id="hud" style="display:none">
+  <div id="hud-top-right">
+    <div id="hud-stars">☆☆☆☆☆</div>
+    <div id="hud-cash">$200</div>
+    <div id="hud-health"><div id="hud-health-fill"></div></div>
+    <div id="hud-bust" style="display:none"><div id="hud-bust-fill"></div><span>BUSTED?</span></div>
+  </div>
+  <div id="hud-speed" style="display:none">0 km/h</div>
+  <div id="hud-objective">Go see Mama Lou (yellow M) for work</div>
+  <div id="hud-timer" style="display:none">0:00</div>
+  <div id="hud-toast"></div>
+  <div id="minimap-wrap">
+    <canvas id="minimap" width="180" height="180"></canvas>
+    <div id="minimap-label">SOLMAR BAY</div>
+  </div>
+  <div id="hud-crosshair" style="display:none">+</div>
+  <div id="hud-help">WASD move / drive &nbsp;·&nbsp; E enter car &nbsp;·&nbsp; Mouse aim &nbsp;·&nbsp; Click shoot &nbsp;·&nbsp; Shift sprint &nbsp;·&nbsp; Space jump / brake &nbsp;·&nbsp; H horn &nbsp;·&nbsp; P pause &nbsp;·&nbsp; M mute</div>
+  <div id="hud-vignette"></div>
+</div>
+
+<!-- Start screen -->
+<div id="screen-start" class="screen show">
+  <div class="panel">
+    <h1>SOLMAR BAY</h1>
+    <p class="tagline">Sun, salt air, and five jobs between you and the top.</p>
+    <p class="intro">A sun-soaked coastal city, yours to take. Steal cars, outrun the law,
+    run jobs for Mama Lou, and take the crown from the Gulls — or just cruise
+    the boulevard and pick up taxi fares.</p>
+    <div class="buttons">
+      <button id="btn-play" class="btn primary">▶ Play</button>
+      <button id="btn-continue" class="btn">Continue saved game</button>
+    </div>
+    <div class="controls-grid">
+      <span>WASD / Arrows</span><span>Move on foot · drive</span>
+      <span>Mouse drag</span><span>Look around</span>
+      <span>Left click</span><span>Shoot the pistol</span>
+      <span>E</span><span>Enter / exit car · talk</span>
+      <span>Shift</span><span>Sprint</span>
+      <span>Space</span><span>Jump · handbrake</span>
+      <span>H</span><span>Horn</span>
+      <span>P / Esc</span><span>Pause</span>
+      <span>M</span><span>Mute</span>
+    </div>
+    <p class="credits">An original game: its city, characters, vehicles, story, art and music are all its own.
+    Progress saves in your browser. <button id="btn-mute" class="btn small">🔊 Sound on</button></p>
+  </div>
+</div>
+
+<!-- Pause -->
+<div id="screen-pause" class="screen">
+  <div class="panel">
+    <h2>Paused</h2>
+    <p id="pause-stats"></p>
+    <div class="buttons">
+      <button id="btn-resume" class="btn primary">Resume</button>
+      <button id="btn-save" class="btn">Save progress</button>
+      <button id="btn-restart" class="btn">New game</button>
+      <button id="btn-quit-menu" class="btn">Main menu</button>
+    </div>
+  </div>
+</div>
+
+<!-- Mission briefing -->
+<div id="screen-briefing" class="screen">
+  <div class="panel">
+    <h2 id="brief-title">Mission</h2>
+    <p class="brief-giver">Mama Lou</p>
+    <p id="brief-text"></p>
+    <p id="brief-reward"></p>
+    <div class="buttons">
+      <button id="btn-brief-start" class="btn primary">Start mission</button>
+      <button id="btn-brief-later" class="btn">Later</button>
+    </div>
+  </div>
+</div>
+
+<!-- Busted -->
+<div id="screen-busted" class="screen">
+  <div class="panel busted">
+    <h2>BUSTED</h2>
+    <p id="busted-fine"></p>
+    <div class="buttons">
+      <button id="btn-busted" class="btn primary">Walk free</button>
+    </div>
+  </div>
+</div>
+
+<!-- Wasted -->
+<div id="screen-wasted" class="screen">
+  <div class="panel wasted">
+    <h2>WASTED</h2>
+    <p id="wasted-fine"></p>
+    <div class="buttons">
+      <button id="btn-wasted" class="btn primary">Get patched up</button>
+    </div>
+  </div>
+</div>
+
+<div id="finale-banner">★ KING OF SOLMAR BAY ★<span>You own this city now.</span></div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
